@@ -1,0 +1,7 @@
+node_modules
+dist
+reports
+!modules/avataaars/dist
+*.DS_Store
+*.log
+.env

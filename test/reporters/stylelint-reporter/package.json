@@ -1,0 +1,9 @@
+{
+  "name": "stylelint-reporter",
+  "version": "1.0.0",
+  "description": "Custom Stylelint reporter for use in GitLab CI",
+  "main": "index.js",
+  "license": "UNLICENSED",
+  "private": true,
+  "dev": true
+}

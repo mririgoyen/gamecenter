@@ -1,0 +1,304 @@
+.root {
+  color: $white;
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  width: 100%;
+}
+
+.user {
+  align-items: center;
+  border-right: 1px solid rgba($white, .2);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 2rem;
+
+  & > svg {
+    max-width: 90%;
+  }
+
+  h1 {
+    border-bottom: 1px solid rgba($white, .2);
+    padding-bottom: 1rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  .download {
+    margin-top: .5rem;
+  }
+}
+
+.info {
+  flex: 2;
+  overflow-y: auto;
+  padding: .5rem 2rem;
+
+  &::-webkit-scrollbar {
+    width: 15px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-clip: content-box;
+    background-color: rgba($white, .3);
+    border: 4px solid transparent;
+    border-radius: 10px;
+    transition: background-color 2s;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  h2 {
+    font-size: .8rem;
+    letter-spacing: .5rem;
+    text-transform: uppercase;
+  }
+}
+
+.games {
+  display: flex;
+}
+
+.game {
+  align-items: center;
+  background-position: center;
+  border: 3px solid rgba($white, .3);
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba($black, .8);
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  font-size: 1.5rem;
+  height: 160px;
+  justify-content: space-between;
+  margin: 1rem 2rem 1rem 0;
+  opacity: 1;
+  padding: 1rem;
+  position: relative;
+  text-shadow: 2px 2px 2px $black;
+  transition: opacity 500ms;
+  z-index: 2;
+
+  &.first {
+    animation: shimmer-gold 1s infinite;
+  }
+
+  &.second {
+    animation: shimmer-silver 1s infinite;
+  }
+
+  &.third {
+    animation: shimmer-bronze 1s infinite;
+  }
+
+  &.not-played {
+    cursor: default;
+    filter: grayscale(100%);
+    opacity: .5;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  div {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: flex-end;
+    position: relative;
+    width: 100%;
+
+    &.loading {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+
+  img {
+    position: absolute;
+    width: 80%;
+  }
+
+  p {
+    margin: 0;
+    text-align: right;
+    width: 100%;
+  }
+
+  svg {
+    height: 75px;
+    margin: 0 !important;
+    width: 75px;
+  }
+
+  .rank {
+    font-size: .9rem;
+    opacity: .8;
+    text-shadow: initial;
+  }
+}
+
+.pacman {
+  background-image: radial-gradient(circle, transparent, $black 120%), url('~/assets/arcade/pacman-tile.png');
+
+  img {
+    top: 9px;
+  }
+}
+
+.galaga {
+  background-image: radial-gradient(circle, transparent, $black 120%), url('~/assets/arcade/galaga-tile.png');
+
+  img {
+    top: -10px;
+    width: 60%;
+  }
+}
+
+.dkong {
+  background-image: radial-gradient(circle, transparent, $black 120%), url('~/assets/arcade/dkong-tile.png');
+
+  img {
+    top: 5px;
+  }
+}
+
+.chievos {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+  padding-top: 1rem;
+}
+
+.achievement {
+  background-color: $black;
+  background-position: center;
+  background-size: contain;
+  border: 2px solid rgba($black, .3);
+  border-radius: 5px;
+  cursor: pointer;
+  filter: grayscale(100%);
+  height: 70px;
+  margin: auto;
+  opacity: .3;
+  overflow: hidden;
+  width: 70px;
+
+  &.obtained {
+    box-shadow: 0 0 5px rgba($black, .6);
+    filter: grayscale(0);
+    opacity: 1;
+  }
+}
+
+.game-modal {
+  table {
+    border-collapse: collapse;
+    width: 100%;
+
+    tr {
+      &:nth-child(even) {
+        background-color: rgba($tradewind, .2);
+      }
+    }
+
+    td {
+      padding: .25rem;
+
+      &:last-child {
+        text-align: right;
+      }
+    }
+  }
+}
+
+.chievo-modal {
+  align-items: center;
+  display: flex;
+  user-select: none;
+
+  img {
+    border: 2px solid rgba($black, .3);
+    border-radius: 5px;
+    height: 75px;
+    margin-right: 1rem;
+    pointer-events: none;
+    width: 75px;
+  }
+
+  p {
+    margin: .25rem;
+  }
+
+  .locked {
+    filter: grayscale(100%);
+    opacity: .3;
+  }
+
+  .obtained-at {
+    color: rgba($black, .8);
+    font-size: .8rem;
+    font-style: italic;
+  }
+
+  .reward {
+    border-top: 1px solid rgba($black, .2);
+    font-size: .9rem;
+    margin-top: .5rem;
+    padding-top: .5rem;
+
+    strong {
+      color: $green;
+    }
+  }
+}
+
+@keyframes shimmer-gold {
+  0% {
+    border-color: rgb(223, 218, 88);
+  }
+
+  50% {
+    border-color: rgb(225, 159, 1);
+  }
+
+  100% {
+    border-color: rgb(223, 218, 88);
+  }
+}
+
+@keyframes shimmer-silver {
+  0% {
+    border-color: rgb(167, 200, 226);
+  }
+
+  50% {
+    border-color: rgb(103, 129, 165);
+  }
+
+  100% {
+    border-color: rgb(167, 200, 226);
+  }
+}
+
+@keyframes shimmer-bronze {
+  0% {
+    border-color: rgb(224, 200, 144);
+  }
+
+  50% {
+    border-color: rgb(187, 110, 33);
+  }
+
+  100% {
+    border-color: rgb(224, 200, 144);
+  }
+}

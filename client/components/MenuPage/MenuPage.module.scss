@@ -1,0 +1,256 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
+  overflow: hidden;
+  position: absolute;
+  width: 100vw;
+
+  header {
+    align-items: center;
+    color: $white;
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    padding: 1.5rem 3rem;
+    text-transform: uppercase;
+    user-select: none;
+
+    h1 {
+      margin: 0;
+      opacity: .9;
+    }
+
+    span {
+      color: rgba($white, .6);
+
+      &::after {
+        content: ' / ';
+      }
+    }
+
+    .logo {
+      svg {
+        max-width: 275px;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.container {
+  background-color: rgba($black, .6);
+  display: flex;
+  flex: 8;
+  overflow-y: auto;
+  padding: 1rem 3rem;
+
+  &::-webkit-scrollbar {
+    width: 15px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-clip: content-box;
+    background-color: rgba($white, .3);
+    border: 4px solid transparent;
+    border-radius: 10px;
+    transition: background-color 2s;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+}
+
+.actions {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  padding: 1.5rem 3rem;
+
+  button {
+    align-items: center;
+    background-color: rgba($black, .2);
+    border-radius: 5px;
+    color: $white;
+    cursor: pointer;
+    display: flex;
+    font-size: 1rem;
+    max-height: 50px;
+    transition: background-color .3s ease-in-out, border-color .3s ease-in-out, box-shadow .3s ease-in-out, color .3s ease-in-out;
+
+    svg {
+      margin-right: .5rem;
+    }
+
+    &.primary {
+      background-color: rgba($green, .8);
+      border: 1px solid rgba($white, .8);
+      flex-direction: row-reverse;
+
+      svg {
+        margin-left: .5rem;
+      }
+
+      &:hover {
+        background-color: rgba($green, 1);
+        color: $white;
+      }
+    }
+  }
+}
+
+.avatar {
+  align-items: center;
+  display: flex;
+  user-select: none;
+
+  svg {
+    height: 80px;
+    margin-right: .5rem;
+    width: 80px;
+  }
+
+  p {
+    color: $white;
+    font-size: 1.5rem;
+    margin: 0;
+  }
+
+  a {
+    color: rgba($white, .8);
+    cursor: pointer;
+    font-size: .9rem;
+
+    &:hover {
+      color: $white;
+      text-decoration: underline dotted;
+    }
+  }
+}
+
+.extra-life {
+  background-color: rgba(24, 90, 125, .9);
+  border-radius: 20px 0 0 20px;
+  box-shadow: 2px 2px 5px rgba($black, .3), inset -5px 5px 10px 3px rgba($white, .2);
+  color: $white;
+  display: flex;
+  margin-right: -3rem;
+  padding: .5rem 0 .5rem 1rem;
+  transform: translateX(0);
+  transition: transform 1.5s;
+  user-select: none;
+
+  &.hidden {
+    transform: translateX(200vw);
+  }
+
+  h1 {
+    font-size: 1rem;
+    margin: 0;
+    min-width: 200px;
+    padding-bottom: .2rem;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  p {
+    display: flex;
+    font-size: .8rem;
+    justify-content: space-between;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  svg {
+    cursor: pointer;
+    width: 160px;
+
+    path {
+      transition: fill 500ms;
+    }
+
+    &:hover {
+      path {
+        fill: rgb(81, 205, 239) !important;
+      }
+    }
+  }
+
+  .info {
+    border-left: 1px solid rgba($white, .2);
+    margin-left: 1rem;
+    padding: 0 1rem;
+  }
+
+  .status {
+    background-color: rgba($black, .3);
+    border: 1px solid $white;
+    border-radius: 10px;
+    height: 10px;
+    overflow: hidden;
+
+    & > div {
+      background-color: $green;
+      height: 100%;
+    }
+  }
+
+  a {
+    align-items: center;
+    background-color: darken($green, 10%);
+    border-left: 1px solid $green;
+    box-shadow: inset 0 15px 10px -10px rgba($white, .2);
+    color: $white;
+    display: flex;
+    height: 100%;
+    margin-top: -.5rem;
+    max-width: 75px;
+    padding: .5rem;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color 250ms;
+
+    &:hover {
+      background-color: $green;
+    }
+  }
+}
+
+.el-modal {
+  h2 {
+    border-bottom: 1px solid rgba($black, .1);
+    font-size: 1.1rem;
+  }
+
+  p {
+    color: lighten($black, 30%);
+  }
+
+  a {
+    color: $coral;
+    text-decoration: none;
+
+    svg {
+      position: relative;
+      top: 2px;
+    }
+
+    &:hover {
+      color: darken($coral, 25%);
+    }
+  }
+}
+
+.el-what {
+  display: flex;
+
+  p {
+    margin: 0;
+    padding-right: 1rem;
+  }
+}

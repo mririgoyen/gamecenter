@@ -1,0 +1,9 @@
+{
+  "name": "eslint-reporter",
+  "version": "1.0.0",
+  "description": "Custom ESLint reporter for use in GitLab CI",
+  "main": "index.js",
+  "license": "UNLICENSED",
+  "private": true,
+  "dev": true
+}

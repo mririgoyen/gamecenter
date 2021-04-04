@@ -1,0 +1,43 @@
+body {
+  background-color: $black;
+  margin: 0;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+* {
+  font-family: 'Alata', sans-serif;
+}
+
+button {
+  background-color: rgba($black, .6);
+  border: 0;
+  border-radius: 10px;
+  color: $white;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 1rem;
+  outline: 0;
+  padding: .6rem 1rem;
+  text-transform: uppercase;
+  transition: background-color .2s ease-in-out, color .2s ease-in-out;
+  user-select: none;
+
+  svg {
+    margin-right: .5rem;
+  }
+
+  &:hover {
+    background-color: rgba($black, .4);
+    border-color: rgba($white, .4);
+  }
+}
+
+.tippy-tooltip-content {
+  background-color: rgba($black, .8);
+  border-radius: 5px;
+  color: $white;
+  font-size: .9rem;
+  padding: .5rem;
+  text-align: center;
+}

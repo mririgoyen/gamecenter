@@ -1,0 +1,293 @@
+.root {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  width: 100%;
+}
+
+.games {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: space-evenly;
+  padding-bottom: 3rem;
+  transition: padding-top .8s;
+  width: 100%;
+
+  &.leaderboards-active {
+    padding-top: 3rem;
+
+    .game {
+      cursor: default;
+
+      &.disabled {
+        filter: grayscale(0);
+        opacity: 1;
+
+        &::after {
+          opacity: 0;
+        }
+      }
+
+      .front {
+        transform: rotateY(-180deg);
+      }
+
+      .back {
+        transform: rotateY(0deg) translateY(30px);
+      }
+
+      img {
+        top: -40px;
+      }
+
+      &.dkong {
+        transition-delay: 500ms;
+      }
+
+      &.galaga {
+        transition-delay: 250ms;
+
+        img {
+          top: -75px;
+        }
+      }
+    }
+  }
+
+  &:not(.leaderboards-active) {
+    .game {
+      &:not(.disabled) {
+        &:hover {
+          transform: scale3d(1.05, 1.05, 1.05);
+        }
+      }
+    }
+  }
+}
+
+.heading {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  width: 100%;
+
+  h2 {
+    color: $white;
+    display: flex;
+    font-size: .9rem;
+    letter-spacing: .25rem;
+    margin: 0;
+    text-transform: uppercase;
+
+    svg {
+      margin: -2px .5rem 0 0;
+    }
+  }
+
+  button {
+    animation: shine 8s infinite;
+    background: linear-gradient(-60deg, rgba($white, 0) 0%, rgba($white, 0) 40%, rgba($white, .3) 50%, rgba($white, 0) 60%, rgba($white, 0) 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border: 1px solid rgba($white, .1);
+    transition: border 500ms;
+
+    &.hide {
+      animation: none;
+      background: transparent;
+    }
+
+    &:hover {
+      border: 1px solid rgba($white, .3);
+    }
+  }
+}
+
+.game {
+  cursor: pointer;
+  flex: 1;
+  height: 90%;
+  margin: 0 2rem;
+  max-height: 450px;
+  max-width: 400px;
+  min-height: 200px;
+  min-width: 250px;
+  position: relative;
+  transition: filter .5s, opacity .5s, transform .2s;
+  width: 100%;
+
+  &.disabled {
+    cursor: default;
+    filter: grayscale(100%);
+    opacity: .5;
+
+    &::after {
+      align-items: center;
+      bottom: 0;
+      color: $white;
+      content: 'Game currently unavailable';
+      display: flex;
+      font-size: 1.2rem;
+      height: 100%;
+      justify-content: center;
+      left: 0;
+      opacity: 1;
+      position: absolute;
+      right: 0;
+      text-shadow: 2px 2px 2px $black;
+      top: 0;
+      transition: opacity .2s;
+      width: 100%;
+    }
+  }
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  img {
+    display: block;
+    left: 0;
+    margin: 0 auto;
+    max-width: 250px;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    transition: top .8s;
+    width: 90%;
+    z-index: 50;
+  }
+
+  .back {
+    color: $white;
+    transform: rotateY(180deg);
+
+    &::after {
+      background-position: center;
+      content: '';
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      transform: scaleX(-1);
+      width: 100%;
+      z-index: -1;
+    }
+
+    .overflow {
+      height: 100%;
+      overflow-y: auto;
+
+      &::-webkit-scrollbar {
+        width: 15px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-clip: content-box;
+        background-color: rgba($white, .3);
+        border: 4px solid transparent;
+        border-radius: 10px;
+        transition: background-color 2s;
+      }
+
+      &::-webkit-scrollbar-track {
+        background-color: transparent;
+      }
+    }
+  }
+
+  .front,
+  .back {
+    backface-visibility: hidden;
+    background-position: center;
+    border: 3px solid $white;
+    border-radius: 10px;
+    box-shadow: 0 0 25px rgba($black, .8);
+    box-sizing: border-box;
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    transition: transform .8s ease;
+    width: 100%;
+  }
+}
+
+.pacman {
+  .front {
+    background-image: url('~/assets/arcade/pacman-tile.png');
+  }
+
+  .back {
+    &::after {
+      background-image: radial-gradient(circle, rgba($black, .8), rgba($black, .9) 120%), url('~/assets/arcade/pacman-tile.png');
+    }
+  }
+
+  img {
+    top: calc(100% - 25px);
+  }
+}
+
+.galaga {
+  .front {
+    background-image: url('~/assets/arcade/galaga-tile.png');
+  }
+
+  .back {
+    &::after {
+      background-image: radial-gradient(circle, rgba($black, .8), rgba($black, .9) 120%), url('~/assets/arcade/galaga-tile.png');
+    }
+  }
+
+  .front,
+  .back,
+  img {
+    transition-delay: 250ms;
+  }
+
+  img {
+    top: calc(100% - 75px);
+  }
+}
+
+.dkong {
+  .front {
+    background-image: url('~/assets/arcade/dkong-tile.png');
+  }
+
+  .back {
+    &::after {
+      background-image: radial-gradient(circle, rgba($black, .8), rgba($black, .9) 120%), url('~/assets/arcade/dkong-tile.png');
+    }
+  }
+
+  .front,
+  .back,
+  img {
+    transition-delay: 500ms;
+  }
+
+  img {
+    top: calc(100% - 27px);
+  }
+}
+
+@keyframes shine {
+  0% {
+    background-position: -250px 0;
+  }
+
+  20%,
+  100% {
+    background-position: 300px 0;
+  }
+}

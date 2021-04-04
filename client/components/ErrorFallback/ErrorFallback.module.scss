@@ -1,0 +1,50 @@
+.root {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 8rem);
+  justify-content: center;
+  margin: 0 auto;
+  padding-top: 8rem;
+  position: absolute;
+  width: 100vw;
+}
+
+.logo {
+  margin-top: -6rem;
+  width: 50%;
+}
+
+.container {
+  background-color: rgba($black, .6);
+  border-radius: 10px;
+  color: $white;
+  margin-top: 2rem;
+  max-width: 50%;
+  padding: 1rem;
+
+  h1 {
+    font-size: 1.4rem;
+    margin: 0;
+    text-align: center;
+  }
+
+  a {
+    color: $coral;
+  }
+}
+
+.action {
+  display: flex;
+  justify-content: center;
+  padding: .5rem;
+}
+
+.details {
+  border-top: 1px solid rgba($white, .2);
+  color: rgba($white, .6);
+  font-size: .7rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  text-align: center;
+}

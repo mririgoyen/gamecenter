@@ -1,0 +1,94 @@
+.root {
+  animation: display 7s cubic-bezier(.85, .01, .25, 1);
+  background-color: $white;
+  box-shadow: 0 0 5px rgba($black, .3);
+  display: flex;
+  position: absolute;
+  top: 5%;
+  transform: translateX(-999rem);
+  user-select: none;
+  z-index: 150;
+}
+
+.graphic {
+  background-color: rgb(81, 85, 84);
+  display: flex;
+  padding: 0 .5rem;
+
+  svg {
+    animation: spin 2s infinite cubic-bezier(.85, .01, .25, 1);
+    width: 75px;
+
+    path {
+      animation: color 2s infinite cubic-bezier(.85, .01, .25, 1);
+    }
+  }
+}
+
+.info {
+  color: $black;
+  padding: .5rem 1rem;
+
+  h1 {
+    color: lighten($black, 75%);
+    font-size: .8rem;
+    letter-spacing: .25rem;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+
+  p {
+    color: lighten($black, 50%);
+    font-size: .9rem;
+    margin: 0;
+  }
+}
+
+@keyframes display {
+  0% {
+    transform: translateX(-999rem);
+  }
+
+  10% {
+    transform: translateX(0);
+  }
+
+  90% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateX(-20deg) rotateY(20deg);
+  }
+
+  100% {
+    transform: rotateX(-20deg) rotateY(740deg);
+  }
+}
+
+@keyframes color {
+  0% {
+    fill: $coral;
+  }
+
+  50% {
+    fill: $tradewind;
+  }
+
+  100% {
+    fill: $coral;
+  }
+}

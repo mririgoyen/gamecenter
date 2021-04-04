@@ -1,0 +1,57 @@
+.root,
+.container {
+  overflow: hidden;
+}
+
+.hello {
+  font-style: italic;
+  font-weight: 700;
+}
+
+.modal {
+  text-align: center;
+
+  svg {
+    color: lighten($black, 50%);
+  }
+
+  .paused,
+  .ready {
+    border-top: 1px solid rgba($black, .2);
+    padding: 1rem 1rem 0;
+  }
+
+  .paused {
+    color: $coral;
+  }
+
+  .ready {
+    color: $green;
+  }
+}
+
+.appear {
+  opacity: 0;
+}
+
+.appear-active {
+  opacity: 1;
+  transition: opacity 1000ms;
+}
+
+.appear-done {
+  opacity: 1;
+}
+
+.exit {
+  opacity: 1;
+}
+
+.exit-active {
+  opacity: 0;
+  transition: opacity 1000ms;
+}
+
+.exit-done {
+  opacity: 0;
+}

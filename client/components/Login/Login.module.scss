@@ -1,0 +1,150 @@
+.root {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 8rem);
+  justify-content: center;
+  margin: 0 auto;
+  padding-top: 8rem;
+  position: absolute;
+  width: 100vw;
+}
+
+.logo {
+  animation: showLogo 3s cubic-bezier(.455, .03, .515, .955) both;
+  width: 70%;
+}
+
+.auth {
+  animation: showAuth 1s cubic-bezier(.39, .575, .565, 1) 2.5s both;
+  color: $white;
+  font-size: 1.5rem;
+  min-height: 200px;
+  text-align: center;
+  text-shadow: rgba($black, .5) 1px 0 5px;
+
+  p {
+    animation: fadeIn 1s cubic-bezier(.39, .575, .565, 1) both;
+    margin: 0;
+    user-select: none;
+  }
+
+  button {
+    animation: fadeIn 1s cubic-bezier(.39, .575, .565, 1) both;
+    margin: 1rem 0 2rem;
+  }
+
+  .welcome {
+    align-items: center;
+    display: flex;
+
+    svg {
+      animation: fadeIn 1s cubic-bezier(.39, .575, .565, 1) both;
+      height: 72px;
+      margin: -.5rem .5rem 0 0;
+      width: 72px;
+    }
+  }
+
+  .signin {
+    align-items: center;
+    background-color: $white;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba($black, .6);
+    color: rgb(117, 117, 117);
+    display: flex;
+    font-size: .9rem;
+    text-transform: unset;
+    transition: box-shadow 250ms;
+
+    svg {
+      height: 20px;
+      width: 20px;
+    }
+
+    &:hover {
+      box-shadow: 0 2px 5px rgba($black, .6);
+    }
+  }
+
+  .signout {
+    cursor: pointer;
+    font-size: .8rem;
+  }
+}
+
+.build {
+  bottom: 0;
+  color: rgba($white, .8);
+  padding: 1rem;
+  position: absolute;
+  right: 0;
+  user-select: none;
+}
+
+.about {
+  text-align: center;
+  user-select: none;
+
+  h2 {
+    border-top: 1px solid rgba($black, .2);
+    font-size: 1.3rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+  }
+
+  p {
+    margin: .2rem;
+  }
+
+  svg {
+    color: lighten($black, 50%);
+  }
+}
+
+.thanks {
+  display: grid;
+  gap: 0 0;
+  grid-template-columns: 1fr 1fr;
+  padding-bottom: 1rem;
+}
+
+@keyframes showLogo {
+  0%,
+  20% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  60%,
+  80% {
+    opacity: 1;
+    transform: translateY(30px);
+  }
+
+  100% {
+    transform: translateY(-30px);
+  }
+}
+
+@keyframes showAuth {
+  0% {
+    opacity: 0;
+    transform: translateZ(-80px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateZ(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
