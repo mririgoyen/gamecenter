@@ -49,7 +49,7 @@ module.exports = {
     new webpack.DefinePlugin({
       productConfig: {
         extraLifeGameDay: `"${process.env.EXTRA_LIFE_GAME_DAY}"`,
-        googleClientId: '"514963731806-0jv2ss1t2oirknel1bqtdqdat7sfs1t6.apps.googleusercontent.com"',
+        googleClientId: '',
         version: `"${process.env.GAME_VERSION || 'latest'}"`
       }
     }),
