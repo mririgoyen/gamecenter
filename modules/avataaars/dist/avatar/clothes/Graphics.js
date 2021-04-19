@@ -247,7 +247,7 @@ var Graphics = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Graphics.prototype.render = function () {
-        return (React.createElement(options_1.Selector, { option: options_1.GraphicOption, defaultOption: ExtraLife },
+        return (React.createElement(options_1.Selector, { option: options_1.GraphicOption, defaultOption: Pizza },
             React.createElement(ExtraLife, { maskID: this.props.maskID }),
             React.createElement(PacMan, { maskID: this.props.maskID }),
             React.createElement(Galaga, { maskID: this.props.maskID }),

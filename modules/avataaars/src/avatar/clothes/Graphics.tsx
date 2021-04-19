@@ -341,7 +341,7 @@ export class Bear extends React.Component<Props> {
 export default class Graphics extends React.Component<Props> {
   render () {
     return (
-      <Selector option={GraphicOption} defaultOption={ExtraLife}>
+      <Selector option={GraphicOption} defaultOption={Pizza}>
         <ExtraLife maskID={this.props.maskID} />
         <PacMan maskID={this.props.maskID} />
         <Galaga maskID={this.props.maskID} />

@@ -42,14 +42,13 @@ module.exports = {
   },
   output: {
     filename: '[name].[contenthash].js',
-    path: path.resolve(__dirname, '/var/www'),
-    publicPath: './'
+    path: path.resolve(__dirname, '/var/www')
   },
   plugins: [
     new webpack.DefinePlugin({
       productConfig: {
         extraLifeGameDay: `"${process.env.EXTRA_LIFE_GAME_DAY}"`,
-        googleClientId: '',
+        googleClientId: `"${process.env.GOOGLE_CLIENT_ID}"`,
         version: `"${process.env.GAME_VERSION || 'latest'}"`
       }
     }),
@@ -73,7 +72,11 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         { from: path.resolve(__dirname, '../assets/emulators/*'), to: '[path][name].[ext]' },
-        { from: path.resolve(__dirname, '../assets/roms/*'), to: '[path][name].[ext]' }
+        {
+          from: path.resolve(__dirname, '../assets/roms/*'),
+          noErrorOnMissing: true,
+          to: '[path][name].[ext]'
+        }
       ]
     }),
   ],

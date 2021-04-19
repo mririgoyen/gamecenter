@@ -11,12 +11,12 @@ services:
       - EXTRA_LIFE_GAME_DAY=2021-11-06
       - GAME_ENV=development
       - GAME_VERSION=latest
-      - GAMECENTER_DB_HOST=
-      - GAMECENTER_DB_PASSWORD=
-      - GAMECENTER_DB_SCHEMA=game-center-dev
-      - GAMECENTER_DB_USER=gamecenter_dev
-      - GOOGLE_OAUTH_API_KEY=
-      - SLACK_TOKEN=
+      - GAMECENTER_DB_HOST=gamecenter-mysql
+      - GAMECENTER_DB_PASSWORD=uuddlrlrbas
+      - GAMECENTER_DB_SCHEMA=game-center
+      - GAMECENTER_DB_USER=root
+      - GOOGLE_OAUTH_API_KEY
+      - SLACK_TOKEN
     ports: 
       - "80:1100"
       - "1100:1100"
@@ -25,13 +25,28 @@ services:
       - ./server:/gamecenter/server:delegated
       - ./modules:/gamecenter/modules:delegated
     command: /gamecenter/node_modules/.bin/pm2-runtime /gamecenter/ecosystem.config.js
+    depends_on:
+      - gamecenter-mysql
   gamecenter-webpack:
-    image: node:14.14
+    image: node:14
     container_name: gamecenter-webpack
     restart: unless-stopped
+    environment:
+      - GOOGLE_CLIENT_ID
     ports:
       - "3000:3000"
     volumes:
       - ./:/gamecenter:delegated
     working_dir: /gamecenter/client
     command: ../node_modules/.bin/webpack serve --progress --color --config ./webpack/dev.webpack.config.js
+  gamecenter-mysql:
+    image: mysql:5
+    container_name: gamecenter-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=uuddlrlrbas
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+      - ./mysql_data:/var/lib/mysql
+    command: mysqld --verbose --sql-mode=""

@@ -71,11 +71,11 @@
 
 @keyframes spin {
   0% {
-    transform: rotateX(-20deg) rotateY(20deg);
+    transform: rotateX(0deg) rotateY(20deg);
   }
 
   100% {
-    transform: rotateX(-20deg) rotateY(740deg);
+    transform: rotateX(0deg) rotateY(740deg);
   }
 }
 

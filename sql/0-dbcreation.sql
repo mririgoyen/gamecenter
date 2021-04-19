@@ -1,4 +1,5 @@
 CREATE DATABASE `game-center` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE game-center;
 
 CREATE TABLE `achievements` (
   `achievementId` varchar(255) NOT NULL,

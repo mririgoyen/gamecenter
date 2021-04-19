@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import cx from 'classnames';
-import { useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil';
-import { getTeam } from 'extra-life';
+import { useRecoilValue, useRecoilState } from 'recoil';
+import { getParticipant } from 'extra-life';
 import Icon from '@mdi/react';
 import { mdiArrowLeft } from '@mdi/js';
 
@@ -9,7 +9,6 @@ import Avataaar from '../../../modules/avataaars';
 
 import { userState } from '~/atoms/userState';
 import { menuState } from '~/atoms/menuState';
-import { modalState } from '~/atoms/modalState';
 
 import useInterval from '~/hooks/useInterval';
 
@@ -29,16 +28,15 @@ function MenuPage({
 }) {
   const user = useRecoilValue(userState);
   const [ menu, setMenu ] = useRecoilState(menuState);
-  const [ extraLifeTeam, setExtraLifeTeam ] = useState({});
+  const [ extraLifeStatus, setExtraLifeStatus ] = useState({});
   const [ shouldUpdateTeamInfo, setShouldUpdateTeamInfo ] = useState(false);
-  const openModal = useSetRecoilState(modalState);
 
   useEffect(() => {
     const getTeamInfo = async () => {
       try {
-        const team = await getTeam(55950);
-        team.percentToGoal = (team.sumDonations / team.fundraisingGoal) * 100;
-        setExtraLifeTeam(team);
+        const participant = await getParticipant(449349);
+        participant.percentToGoal = (participant.sumDonations / participant.fundraisingGoal) * 100;
+        setExtraLifeStatus(participant);
       } catch (error) {
         console.error(error);
       }
@@ -48,27 +46,6 @@ function MenuPage({
   }, [ shouldUpdateTeamInfo ]);
 
   useInterval(() => setShouldUpdateTeamInfo(true), 300000);
-
-  const showExtraLifeModal = () => {
-    openModal({
-      contents: (
-        <div className={classes['el-modal']}>
-          <h2>What is Extra Life?</h2>
-          <div className={classes['el-what']}>
-            <p>Extra Life is a fundraiser, much like Relay for Life, except it revolves around gaming. It’s a gaming marathon to support Children’s Miracle Network hospitals. These hospitals treat thousands of children each year, regardless of their illness, injury, or even their family’s ability to pay. These kids are facing scary stuff like cancer, cystic fibrosis, and injuries they may get from just being a kid.</p>
-            <iframe
-              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-              allowFullScreen
-              frameBorder='0'
-              height='200'
-              src='https://www.youtube-nocookie.com/embed/mWenXu7twy0'
-              width='355'
-            />
-          </div>
-        </div>
-      )
-    });
-  };
 
   return (
     <div className={cx(classes.root, className)}>
@@ -103,17 +80,17 @@ function MenuPage({
         ) : (
           <div className={classes.primary}>
             <div className={cx(classes['extra-life'], {
-              [classes.hidden]: !Object.keys(extraLifeTeam).length
+              [classes.hidden]: !Object.keys(extraLifeStatus).length
             })}>
-              <ExtraLifeLogo onClick={showExtraLifeModal} />
+              <ExtraLifeLogo />
               <div className={classes.info}>
-                <h1>Team {extraLifeTeam.name}</h1>
+                <h1>{extraLifeStatus.displayName}</h1>
                 <p>
-                  <span>Raised ${Math.ceil(extraLifeTeam.sumDonations)}</span>
-                  <span>Goal ${extraLifeTeam.fundraisingGoal}</span>
+                  <span>Raised ${Math.ceil(extraLifeStatus.sumDonations)}</span>
+                  <span>Goal ${extraLifeStatus.fundraisingGoal}</span>
                 </p>
                 <div className={classes.status}>
-                  <div style={{ width: `${extraLifeTeam.percentToGoal}%` }} />
+                  <div style={{ width: `${extraLifeStatus.percentToGoal}%` }} />
                 </div>
               </div>
               <div className={classes.donate}>

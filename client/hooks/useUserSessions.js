@@ -53,9 +53,21 @@ const useUserSession = async ({ googleUser, isInitialized, isSignedIn }) => {
         if (!createResponse.ok) {
           throw new Error('Unable to create new user');
         }
-      }
 
-      if (!userResponse.ok) {
+        const newUserInfo = await userResponse.json();
+
+        return {
+          achievements: [],
+          avatarConfig: {},
+          displayName,
+          emailAddress: profileObj.email,
+          id: newUserInfo.userId,
+          isAdmin: false,
+          isAuthenticated: true,
+          key: googleId,
+          token: tokenId
+        };
+      } else if (!userResponse.ok) {
         throw userResponse;
       }
 

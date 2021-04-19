@@ -166,17 +166,10 @@
   }
 
   svg {
-    cursor: pointer;
     width: 160px;
 
     path {
       transition: fill 500ms;
-    }
-
-    &:hover {
-      path {
-        fill: rgb(81, 205, 239) !important;
-      }
     }
   }
 

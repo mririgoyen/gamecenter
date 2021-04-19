@@ -22,6 +22,7 @@ Leaderboards allowed everyone to get a little competitive, and we had a lot of f
 - Required
   - Docker v19+
   - docker-compose v1.26.0+
+  - Chrome
 - Recommended
   - Visual Studio Code
 
@@ -29,16 +30,30 @@ Leaderboards allowed everyone to get a little competitive, and we had a lot of f
 
 ## Getting Started
 
+### Create a Google Sign-In
+
+1. Follow the directions here: <https://developers.google.com/identity/sign-in/web/sign-in>
+2. After creating your OAuth 2.0 Client Id, create an API key in the Google console.
+3. Create a `.env` file in the root of the repo with your Client ID and API keys:
+
+```bash
+GOOGLE_CLIENT_ID={YOUR_CLIENT_ID}
+GOOGLE_OAUTH_API_KEY={YOUR_API_KEY}
+```
+
+### Start the Dev Environment
+
 1. Run `npm run local:build` to build the Docker image.
 2. Run `npm i` locally. This is to allow webpack to run.
 3. Run `npm run local:start`.
 4. Add a local HOSTS override: _(This is required because of Google Authentication.)_
 
     ```bash
-    0.0.0.0 dev-gamecenter
+    0.0.0.0 dev-gamecenter.com
     ```
 
-5. The game can be reached at <http://dev-gamecenter>.
+5. The game can be reached at <http://dev-gamecenter.com>.
+  -- **NOTE:** GameCenter has only been developed to work in Chrome.
 
 When you've completed your dev work, you can stop all running containers by running `npm run local:stop`.
 
@@ -55,6 +70,8 @@ When you need to add (or remove) a dependency to the server, never run a `npm in
 When you need to add (or remove) a dependency to the client, run `npm install` locally.
 
 ## Legal
+
+MAME is a registered trademark of Gregory Ember. Emscripten is copyrighted by the Emscripten Contributor team.
 
 All references to PAC-MAN, Galaga, and Donkey Kong are copyrighted by their respective owners.
 

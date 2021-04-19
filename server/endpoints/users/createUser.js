@@ -72,8 +72,8 @@ const createUser = async (req, res) => {
   }
 
   try {
-    await createUserRecord(req.log, { avatarConfig, displayName, emailAddress });
-    res.send(204);
+    const userId = await createUserRecord(req.log, { avatarConfig, displayName, emailAddress });
+    res.json({ userId });
 
     notifyChannel(req.log, {
       attachments: [{

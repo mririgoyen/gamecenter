@@ -3,9 +3,10 @@ const db = require('../../lib/mysql')();
 
 const createUserRecord = async (log, { avatarConfig, displayName, emailAddress }) => {
   log.info({ emailAddress, source: 'users.createUserRecord' }, 'Creating user record');
+  const userId = uuid.v4();
   const { results } = await db.query(
     'INSERT INTO user (userId, emailAddress, displayName, avatarConfig) VALUES (?, ?, ?, ?)',
-    [ uuid.v4(), emailAddress, displayName, JSON.stringify(avatarConfig) ]
+    [ userId, emailAddress, displayName, JSON.stringify(avatarConfig) ]
   );
 
   if (results.affectedRows !== 1) {
@@ -13,7 +14,7 @@ const createUserRecord = async (log, { avatarConfig, displayName, emailAddress }
     throw new Error('UnexpectedResult');
   }
 
-  return results;
+  return userId;
 };
 
 module.exports = createUserRecord;

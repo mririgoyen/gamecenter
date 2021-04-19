@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import cx from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 import Icon from '@mdi/react';
-import { mdiArrowLeft, mdiMenuLeft, mdiPlay } from '@mdi/js';
+import { mdiArrowLeft, mdiMenuLeft, mdiPlay, mdiStar } from '@mdi/js';
 
 import classes from './Actions.module.scss';
 
@@ -63,7 +63,7 @@ function Actions({
           onClick={insertCoin}
         >
           <div>
-            <Icon path={mdiStar} size={1} />
+            <Icon path={mdiStar} size={2} />
           </div>
         </button>
         <button

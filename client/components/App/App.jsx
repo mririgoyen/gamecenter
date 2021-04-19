@@ -59,7 +59,7 @@ function App() {
           <div className={classes.modal}>
             <Icon path={mdiLanDisconnect} size={4} />
             <p>Your connection to the GameCenter server was lost.</p>
-            <p>Please check your internet and VPN connections.</p>
+            <p>Please check your internet connection.</p>
             {isInArcade && <p className={classes.paused}>Your game has been paused.<br/>You will be able to resume play once you reestablish your connection.</p>}
           </div>
         ),

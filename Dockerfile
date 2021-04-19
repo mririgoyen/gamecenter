@@ -2,7 +2,7 @@
 FROM node:14-alpine AS base
 
 # Copy needed files
-COPY ./build/healthcheck.js .npmrc package.json package-lock.json ecosystem.config.js /gamecenter/
+COPY ./build/healthcheck.js package.json package-lock.json ecosystem.config.js /gamecenter/
 COPY ./client /gamecenter/client
 COPY ./modules /gamecenter/modules
 COPY ./server /gamecenter/server
@@ -13,10 +13,11 @@ RUN cd /gamecenter; npm ci
 
 # Build client resources
 ARG GAME_VERSION
+ARG GOOGLE_CLIENT_ID
 ARG EXTRA_LIFE_GAME_DAY
 RUN \
   cd /gamecenter/client && \
-  NODE_ENV=production GAME_VERSION=$GAME_VERSION EXTRA_LIFE_GAME_DAY=$EXTRA_LIFE_GAME_DAY ../node_modules/.bin/webpack --config ./webpack/prod.webpack.config.js && \
+  NODE_ENV=production GAME_VERSION=$GAME_VERSION GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID EXTRA_LIFE_GAME_DAY=$EXTRA_LIFE_GAME_DAY ../node_modules/.bin/webpack --config ./webpack/prod.webpack.config.js && \
   cd /gamecenter/ && \
   rm -rf /client
 
