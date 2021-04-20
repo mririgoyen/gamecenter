@@ -33,8 +33,9 @@ Leaderboards allowed everyone to get a little competitive, and we had a lot of f
 ### Create a Google Sign-In
 
 1. Follow the directions here: <https://developers.google.com/identity/sign-in/web/sign-in>
-2. After creating your OAuth 2.0 Client Id, create an API key in the Google console.
-3. Create a `.env` file in the root of the repo with your Client ID and API keys:
+2. Add `http://dev-gamecenter.com` to the "Authorize JavaScript Origins" and "Authorized redirect URIs".
+3. After creating your OAuth 2.0 Client Id, create an API key in the Google console.
+4. Create a `.env` file in the root of the repo with your Client ID and API keys:
 
 ```bash
 GOOGLE_CLIENT_ID={YOUR_CLIENT_ID}
@@ -53,7 +54,7 @@ GOOGLE_OAUTH_API_KEY={YOUR_API_KEY}
     ```
 
 5. The game can be reached at <http://dev-gamecenter.com>.
-  -- **NOTE:** GameCenter has only been developed to work in Chrome.
+   - **NOTE:** GameCenter has only been developed to work in Chrome.
 
 When you've completed your dev work, you can stop all running containers by running `npm run local:stop`.
 
