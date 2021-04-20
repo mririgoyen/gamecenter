@@ -53,7 +53,7 @@ GOOGLE_OAUTH_API_KEY={YOUR_API_KEY}
     0.0.0.0 dev-gamecenter.com
     ```
 
-5. The game can be reached at <http://dev-gamecenter.com>.
+5. GameCenter can be reached at <http://dev-gamecenter.com>.
    - **NOTE:** GameCenter has only been developed to work in Chrome.
 
 When you've completed your dev work, you can stop all running containers by running `npm run local:stop`.
