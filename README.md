@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="screenshot.png">
+  <img src="./.github/screenshot.png">
   <h1>GameCenter</h1>
 </div>
 
